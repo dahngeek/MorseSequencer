@@ -1,0 +1,112 @@
+<html>
+	<head>
+		<title>morse</title>
+		<style>
+		body {
+			background: #000;
+			color: #fff;
+		}
+		#question {
+			position: absolute;
+			top: 30%;
+			left: 45%;
+			margin-top: -85px;
+			margin-left: -80px;
+			font-size: 170px;
+			margin: 0;
+		}
+		#palabra {
+			
+			position: absolute;
+			bottom: 30px;
+			margin: 0;
+			text-align: center;
+			width: 99%;
+			font-size: 30px;
+			font-family: Verdana, sans-serif;
+		}
+		.grapper {
+			display: none;
+		}
+		</style>
+		<script>
+		window.onload = function() {
+			var punto = 500;
+			var linea = 1500;
+			var abecedario = [];
+			abecedario["a"] = [punto, linea];
+			abecedario["b"] = [linea, punto, punto, punto];
+			abecedario["c"] = [linea, punto, linea, punto];
+			abecedario["d"] = [linea, punto, punto]
+			abecedario["e"] = [punto]
+			abecedario["f"] = [punto, punto, linea, punto];
+			abecedario["g"] = [linea, linea, punto];
+			abecedario["h"] = [punto, punto, punto, punto];
+			abecedario["i"] = [punto, punto];
+			abecedario["j"] = [punto, linea, linea, linea]
+			abecedario["k"] = [linea, punto, linea]
+			abecedario["l"] = [punto, linea, punto, punto];
+			abecedario["m"] = [linea, linea];
+			abecedario["n"] = [linea, punto];
+			abecedario["o"] = [linea, linea, linea];
+			abecedario["p"] = [punto, linea, linea, punto];
+			abecedario["q"] = [linea, linea, punto, linea];
+			abecedario["r"] = [punto, linea, punto];
+			abecedario["s"] = [punto, punto, punto];
+			abecedario["t"] = [linea];
+			abecedario["u"] = [punto, punto, linea];
+			abecedario["v"] = [punto, punto, punto, linea];
+			abecedario["w"] = [punto, punto, punto, linea];
+			abecedario["x"] = [linea, punto, punto, linea];
+			abecedario["y"] = [linea, punto, linea, linea];
+			abecedario["z"] = [linea, linea, punto, punto];
+
+			
+			
+			var palabrasPosibles = ["sos"];
+			var palabra = palabrasPosibles[Math.floor(Math.random() * palabrasPosibles.length)].toLowerCase();;
+			anchopalabra = palabra.length;
+			console.log("Ancho palabra: "+anchopalabra);
+			i = 0;
+			sumador = 1000;
+			window.setTimeout(function(){
+				document.getElementById('palabra').style.display = "none";
+			},sumador-200);
+			while (i < anchopalabra) {
+				letra = abecedario[palabra[i]];
+				console.log("Letra: "+palabra[i]);
+				n = 0;
+				console.log(letra);
+				while (n < letra.length) {
+					puntoolinea = letra[n];
+					window.setTimeout(function() {
+						document.body.style.background = "#fff";
+					}, sumador);
+					sumador = sumador + puntoolinea;
+					window.setTimeout(function(){
+						document.body.style.background = "#000";
+					},sumador);
+					sumador = sumador + punto;
+					n = n+1;					
+				}
+				sumador = sumador + linea
+				i = i+1;
+			}
+			sumador = sumador + 1500;
+			window.setTimeout(function() {
+				document.getElementById('palabra').innerHTML = palabra.toUpperCase();
+				document.getElementById('palabra').style.display = "block";
+			},sumador);
+		}
+		</script>
+	</head>
+	<body>
+		<div class="grapper">
+			<p id="question">?</p>
+			<input id="letra" type="text" placeholder="Escribe la Letra"> 
+			<input type="button" id="Verificar" value=">">
+			
+		</div>
+		<p id="palabra">Iniciando...</p>
+	</body>
+</html>

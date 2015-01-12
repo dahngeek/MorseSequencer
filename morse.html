@@ -1,0 +1,43 @@
+<html>
+	<head>
+		<title>morse</title>
+		<style>
+		body {
+			background: #000;
+		}
+		
+		</style>
+		<script>
+			document.addEventListener( 'keydown', function ( event ) {
+				switch ( event.keyCode ) {
+
+					case 8: // prevent browser back 
+						event.preventDefault();
+						break;
+					case 32:
+						document.body.style.background = '#fff'
+						console.log();
+						break;
+					
+				}
+
+			} );
+			document.addEventListener( 'keyup', function ( event ) {
+				switch ( event.keyCode ) {
+
+					case 8: // prevent browser back 
+						event.preventDefault();
+						break;
+					case 32:
+						document.body.style.background = '#000'
+						console.log();
+						break;
+					
+				}
+
+			} );
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
